@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Invie - Precios</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Allerta" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+	<header id="header" class="header background">
+		<div class="contenedor">
+			<figure class="logotipo"><!-- logotipo -->
+				<img src="images/invie.png" width="186" height="60" alt="invie guitarras">
+			</figure>
+			<span id="burguer-button" class="burguer-button icon-menu"></span>
+			<nav class="menu" id="menu"><!-- menu -->
+				<ul>
+					<li>
+						<a href="index.html">Home</a>
+					</li>
+					<li>
+						<a href="index.html#guitarras">Guitarras</a>
+					</li>
+					<li>
+						<a href="precios.html">Precios</a>
+					</li>
+				</ul>
+			</nav>
+			
+		</div>
+	</header>
+	<section class="tabla">
+		<div class="contenedor">
+			<table>
+				<thead>
+					<tr>
+						<th>Modelo</th>
+						<th>Precio</th>
+						<th>Descripción</th>
+						<th>Modelo</th>
+						<th>Precio</th>
+						<th>Descripción</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Invie Classic</td>
+						<td>$100.000.-</td>
+						<td>La clásica guitarra de invie</td>
+						<td>Invie Classic</td>
+						<td>$100.000.-</td>
+						<td>La clásica guitarra de invie</td>
+					</tr>
+					<tr>
+						<td>Invie Acústica</td>
+						<td>$120.000.-</td>
+						<td>La guitarra acústica de invie</td>						
+						<td>Invie Acústica</td>
+						<td>$120.000.-</td>
+						<td>La guitarra acústica de invie</td>
+					</tr>
+					<tr>
+						<td>Invie Custom</td>
+						<td>$180.000.-</td>
+						<td>La guitarra custom de invie</td>
+						<td>Invie Custom</td>
+						<td>$180.000.-</td>
+						<td>La guitarra custom de invie</td>
+					</tr>
+
+					<tr></tr>
+					<tr></tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+	
+	<footer class="footer">	
+		<div class="contenedor">
+			<div class="contacto">	
+				<img src="images/invie-white.png" alt="logotipo blanco">
+				<a href="tel: +4662057"><strong>Teléfono</strong><span>4662057</span></a>
+				<a href="mailto:contacto@gmweb.com"><strong>E-mail</strong><span>cont@gmweb.com</span></a>
+			</div>
+			<div class="formulario">	
+				<div class="col1">
+					<label for="nombre">Nombre</label>
+					<input type="text" required id="nombre" name="nombre" />
+					<label for="email">E-mail</label>
+					<input type="email" id="email" name="email" required/>
+					<div class="sexo">
+						<label for="mujer">
+							<input type="radio" id="mujer" checked value="mujer">Mujer
+						</label>
+						<label for="hombre">
+							<input type="radio" id="hombre" name="sexo" value="hombre">Hombre
+						</label>
+					</div>
+					<div class="intereses">
+						<label for="cotizacion">
+							<input type="checkbox" id="cotizacion" checked name="intereses" value="cotizacion"> Cotización		
+						</label>
+						<label for="reclamos">
+							<input type="checkbox" id="reclamos" name="intereses" value="reclamos"> Reclamos		
+						</label>
+						<label for="comentarios">
+							<input type="checkbox" id="comentarios" name="intereses" value="comentarios"> Comentarios		
+						</label>
+						<label for="otros">
+							<input type="checkbox" id="otros" name="intereses" value="otros"> Otros		
+						</label>
+					</div>
+				</div>
+				
+				<div class="col2">
+					<label for="comentarios">Comentarios</label>
+					<textarea id="comentarios" cols="30" rows="7" name="comentarios"></textarea> 
+					<input type="submit" value="Enviar" class="button" />
+				</div>
+			</div>
+		</div>
+	</footer>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/blazy/1.6.3/blazy.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+	<script>
+		var $burguerButton = document.getElementById('burguer-button');
+		var $menu = document.getElementById('menu');
+
+		function toggleMenu(){
+			$menu.classList.toggle('active');
+			$burguerButton.classList.toggle('icon-close');
+		};
+
+		function showMenu(){
+			$menu.classList.add('active');
+			$burguerButton.classList.add('icon-close');
+		};
+
+		function hideMenu(){
+			$menu.classList.remove('active');
+			$burguerButton.classList.remove('icon-close');
+		};
+
+		var consulta = window.matchMedia('(max-width: 500px)');
+		consulta.addListener(mediaQuery);
+
+		function mediaQuery (){
+			if(consulta.matches){
+				console.log('se cumple');
+				$burguerButton.addEventListener('click', toggleMenu);
+			}else{
+				$burguerButton.removeEventListener('click', toggleMenu);
+				console.log('no se cumple');
+			}
+		}
+		mediaQuery();
+
+		//lazy loading...
+		var blazy = new Blazy({
+			selector: 'img'
+		});
+		//gestos touch
+		var $body = document.body;
+		var gestos = new Hammer($body);
+		gestos.on('swipeleft', hideMenu);
+		gestos.on('swiperight', showMenu);
+
+	</script>
+</body>
+</html>
