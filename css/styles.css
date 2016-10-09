@@ -423,6 +423,11 @@ input:focus, textarea:focus {
 	.portada .contenedor {
 		position: static;
 	}
+	.portada .button {
+		display: block;
+		margin-bottom: 	15px;
+		
+	}
 	.burguer-button{
 		display: inline-block;
 	}
@@ -479,6 +484,10 @@ input:focus, textarea:focus {
 	.title-b{
 		font-size: 30px;
 	}
+	.col2 .button{
+	margin-top: 5px;
+	width: 100%;	
+}
 
 }
 
